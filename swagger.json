@@ -1,0 +1,156 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "EDInfo Rules Rest API For USA New Jersey Gov.",
+		"version": "1.0",
+		"title": "EDInfoRules REST API",
+		"termsOfService": "Terms of service",
+		"contact": {
+			"name": "Smith ",
+			"url": "https://www.usa.nj.gov/",
+			"email": "SmithNj@usa.gov"
+		},
+		"license": {
+			"name": "Apache License Version 2.0",
+			"url": "https://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "localhost:9090",
+	"basePath": "/EdRulesInfoApi",
+	"tags": [
+		{
+			"name": "ed-rules-rest-controller",
+			"description": "This is used to Verify plan Info........"
+		}
+	],
+	"paths": {
+		"/determineElig": {
+			"post": {
+				"tags": [
+					"getWelcomeNote"
+				],
+				"summary": "This is used to Verify Info About Plan Eligibility...",
+				"operationId": "checkEligibilityUsingPOST",
+				"consumes": [
+					"application/xml",
+					"application/json"
+				],
+				"produces": [
+					"application/xml",
+					"text/html",
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "request",
+						"description": "request",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/IndvInfoRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"IndvInfoRequest": {
+			"type": "object",
+			"properties": {
+				"age": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"indvId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"maritualStatus": {
+					"type": "string"
+				},
+				"monthlyIncome": {
+					"type": "number",
+					"format": "double"
+				},
+				"monthlyOtherIncome": {
+					"type": "number",
+					"format": "double"
+				},
+				"noOfKids": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"planName": {
+					"type": "string"
+				},
+				"qhpPurchased": {
+					"type": "boolean"
+				},
+				"ssn": {
+					"type": "integer",
+					"format": "int64"
+				}
+			}
+		},
+		"PlanStatusResponse": {
+			"type": "object",
+			"properties": {
+				"benefitAmt": {
+					"type": "number",
+					"format": "double"
+				},
+				"denialReason": {
+					"type": "string"
+				},
+				"planEndDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"planId": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"planName": {
+					"type": "string"
+				},
+				"planStartDate": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"planStatus": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
